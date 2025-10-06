@@ -5,7 +5,6 @@
 #  Dequeue Remove the element from the head (front) of the queue
 #  Peek View the element at the head of the queue without removing it
 #  Length Return the number of elements in the queue
-
 def question_1():
     class Queue:
         def __init__(self):
@@ -87,7 +86,6 @@ def question_1():
 #  Pop Remove the element from the top of the stack
 #  Peek View the element at the top of the stack without removing it
 #  Length Return the number of elements in the stack
-
 def question_2():
     class Stack:
         def __init__(self):
@@ -162,19 +160,63 @@ def question_2():
 # Question #3:
 # Design an algorithm to reverse a Queue using Stacks and Queues.
 # (Example: Convert Queue “12345” into Queue “54321”.)
-
 def reverse_queue(queue):
     return queue[::-1]
 
 
 # Question #4:
-#
+# Made the executive decision to skip this, as I already make both Question #1 and Question #2 a circular queue system.
+
+
+# Question #5:
+# Design an algorithm to continuously remove adjacent duplicate letters from
+# a string until no adjacent duplicates remain, using a Stack or a Queue. Can
+# you also implement this using the alternative ADT?
+# (Example: Convert “abbccd” to “ad”, “dsallasg” to “dg”, and “abccbadd” to an
+# empty string.)
+def remove_adjacent_characters(data):
+    stack = []
+
+    for char in data:
+        if stack and stack[-1] == char:
+            stack.pop()
+        else:
+            stack.append(char)
+
+    return ''.join(stack)
+
+
+# Question #6:
+# Develop an algorithm to determine if the brackets in a string are valid, using
+# a Stack or a Queue. This means open brackets must be closed by the same
+# type of brackets in the correct order. Can you implement this using the other
+# ADT?
+# (Example: “(abc)” returns True, “ds” returns True, and “[a{b]c}” returns False.)
+def brackets_validation(data):
+    stack = []
+    bracket_pairs = {')': '(', ']': '[', '}': '{'}
+
+    for char in data:
+        if char in "([{":
+            stack.append(char)
+        elif char in ")]}":
+            if not stack or stack[-1] != bracket_pairs[char]:
+                return False
+            stack.pop()
+
+    return True
 
 
 def main():
     question_1()
     question_2()
     print(reverse_queue([1, 2, 3, 4, 5]))
+    print(remove_adjacent_characters("abbccd"))
+    print(remove_adjacent_characters("dsallasg"))
+    print(remove_adjacent_characters("abccbadd"))
+    print(brackets_validation("(abc)"))
+    print(brackets_validation("ds"))
+    print(brackets_validation("[a{b]c}"))
 
 
 if __name__ == "__main__":
