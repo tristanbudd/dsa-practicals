@@ -210,10 +210,16 @@ def brackets_validation(data):
 def main():
     question_1()
     question_2()
+
+    # Question #3
     print(reverse_queue([1, 2, 3, 4, 5]))
+
+    # Question #5
     print(remove_adjacent_characters("abbccd"))
     print(remove_adjacent_characters("dsallasg"))
     print(remove_adjacent_characters("abccbadd"))
+
+    # Question #6
     print(brackets_validation("(abc)"))
     print(brackets_validation("ds"))
     print(brackets_validation("[a{b]c}"))
