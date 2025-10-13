@@ -1,5 +1,7 @@
 # Using https://www.programiz.com/dsa for info about sorting types.
 
+import random
+
 """
 Question #1
 
@@ -131,18 +133,51 @@ perform searching by dividing a sorted array into three equal parts instead of
 two. Assess and compare its performance with binary search using arbitrary
 sorted arrays.
 """
-def ternary_search(data, value):
-    pass
+def ternary_search(arr, value):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid1 = low + (high - low) // 3
+        mid2 = high - (high - low) // 3
+
+        if arr[mid1] == value:
+            return mid1
+        if arr[mid2] == value:
+            return mid2
+
+        if value < arr[mid1]:
+            high = mid1 - 1
+        elif value > arr[mid2]:
+            low = mid2 + 1
+        else:
+            low = mid1 + 1
+            high = mid2 - 1
+
+    return -1
+
+
 
 def main():
-    print(selection_sort([64, 25, 12, 22, 11]))
-    print(insertion_sort([64, 25, 12, 22, 11]))
-    print(bubble_sort([64, 25, 12, 22, 11]))
+    large_dataset = random.sample(range(1, 1001), 20)
 
-    print(linear_search([11, 12, 22, 25, 64], 22))
-    print(binary_search([11, 12, 22, 25, 64, 128, 256], 128))
-    print(binary_search_recursive([11, 12, 22, 25, 64, 128, 256], 128, 0, 7))
-    print(ternary_search([11, 12, 22, 25, 64, 128, 256], 128))
+    print("Original dataset:", large_dataset)
+
+    # Sorting tests
+    print("Selection Sort:", selection_sort(large_dataset.copy()))
+    print("Insertion Sort:", insertion_sort(large_dataset.copy()))
+    print("Bubble Sort:", bubble_sort(large_dataset.copy()))
+
+    # Searching tests
+    sorted_dataset = sorted(large_dataset)
+    target = sorted_dataset[10]
+
+    print("Sorted dataset:", sorted_dataset)
+    print(f"Linear Search for {target}:", linear_search(sorted_dataset, target))
+    print(f"Binary Search for {target}:", binary_search(sorted_dataset, target))
+    print(f"Binary Search Recursive for {target}:",
+          binary_search_recursive(sorted_dataset, target, 0, len(sorted_dataset) - 1))
+    print(f"Ternary Search for {target}:", ternary_search(sorted_dataset, target))
 
 if __name__ == "__main__":
     main()
