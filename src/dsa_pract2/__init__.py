@@ -9,6 +9,8 @@ Implement Selection Sort:
 Recall that in each iteration, Selection Sort finds the minimum or maximum in the
 unsorted part of the array and moves it to the sorted part. Repeat until the array is
 fully sorted.
+
+O(n²) | In-place | Not stable
 """
 def selection_sort(data):
     array_length = len(data)
@@ -33,6 +35,8 @@ Implement Insertion Sort:
 Recall that in each iteration, Insertion Sort takes an element from the unsorted part,
 finds its correct position in the sorted part, and inserts it. Repeat until the array is fully
 sorted.
+
+Best O(n), Worst O(n²) | In-place | Stable
 """
 def insertion_sort(data):
     for i in range(1, len(data)):
@@ -55,6 +59,8 @@ Implement Bubble Sort:
 Recall that in each iteration, Bubble Sort compares adjacent elements in the unsorted
 part and swaps them if needed. After each pass, the last element of the unsorted part
 is in its final position. Repeat until the array is fully sorted.
+
+O(n²) | In-place | Stable
 """
 def bubble_sort(data):
     for i in range(len(data)):
@@ -70,6 +76,8 @@ Question #4:
 
 Implement Linear Search for an Array or List, sequentially checking each
 element of the array or list to find a target value.
+
+O(n) | Works on unsorted data
 """
 def linear_search(data, value):
     for i in range(len(data)):
@@ -84,6 +92,8 @@ Question #5
 
 Implement Binary Search for a Sorted Array (Iterative Method), halving the
 search space at each step.
+
+O(log n) | Sorted data only
 """
 def binary_search(data, value):
     low = 0
@@ -110,6 +120,8 @@ Question #6
 Implement Binary Search for a Sorted Array (Recursive Method) and
 compare its performance with the iterative method in Ex 5 using arbitrary
 sorted arrays.
+
+O(log n) | Sorted data only
 """
 def binary_search_recursive(data, value, low, high):
     if high >= low:
@@ -132,6 +144,8 @@ Question #7:
 perform searching by dividing a sorted array into three equal parts instead of
 two. Assess and compare its performance with binary search using arbitrary
 sorted arrays.
+
+O(log₃ n) | Sorted data only
 """
 def ternary_search(arr, value):
     low = 0
