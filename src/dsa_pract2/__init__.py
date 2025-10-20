@@ -157,7 +157,6 @@ def ternary_search(arr, value):
     return -1
 
 
-
 def main():
     large_dataset = random.sample(range(1, 1001), 20)
 
@@ -175,8 +174,7 @@ def main():
     print("Sorted dataset:", sorted_dataset)
     print(f"Linear Search for {target}:", linear_search(sorted_dataset, target))
     print(f"Binary Search for {target}:", binary_search(sorted_dataset, target))
-    print(f"Binary Search Recursive for {target}:",
-          binary_search_recursive(sorted_dataset, target, 0, len(sorted_dataset) - 1))
+    print(f"Binary Search Recursive for {target}:", binary_search_recursive(sorted_dataset, target, 0, len(sorted_dataset) - 1))
     print(f"Ternary Search for {target}:", ternary_search(sorted_dataset, target))
 
 if __name__ == "__main__":
